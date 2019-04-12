@@ -11,7 +11,7 @@ before_script:
   - npm install -g ionic
 
 script:
-  - ionic build
+  - npm install && ionic build
 
 notifications:
   email:
