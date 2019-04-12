@@ -8,5 +8,20 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card class="news-card" *ngFor="let item of items">
+    <ion-card-header>
+      <ion-card-title>
+        <span *ngIf="item.title && item.title.rendered" [innerHTML]="item.title.rendered"></span>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p *ngIf="item.excerpt && item.excerpt.rendered" [innerHTML]="item.excerpt.rendered"></p>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
