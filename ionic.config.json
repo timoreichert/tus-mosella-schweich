@@ -1,5 +1,7 @@
 {
   "name": "tus-mosella-schweich",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

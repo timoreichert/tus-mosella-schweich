@@ -8,14 +8,21 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
+          <ion-item-group>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                <ion-icon slot="start" *ngIf="p.icon" [name]="p.icon"></ion-icon>
+                <ion-label class="ion-text-uppercase">
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-item-group>
+          <ion-item-group>
+            <ion-item>
+              <ion-note slot="end" *ngIf="version">Versoin {{version}}</ion-note>
             </ion-item>
-          </ion-menu-toggle>
+          </ion-item-group>
         </ion-list>
       </ion-content>
     </ion-menu>
