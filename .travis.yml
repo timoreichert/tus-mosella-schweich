@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "node"
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+
+before_script:
+  - npm install -g ionic
+
+script:
+  - ionic build
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change
