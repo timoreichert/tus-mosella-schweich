@@ -1,39 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { News } from './news.model';
+import { ConfigService } from './config.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
-  data: any = null;
+
+  private url: string;
   constructor(
-    public http: HttpClient
-  ) { }
+    public http: HttpClient,
+    configService: ConfigService
+  ) {
+    this.url = configService.url + 'wp-json/wp/v2/posts';
+  }
 
-  load(url: string, page?: number) {
-
-    // set pagination
-    if (!page) {
-      page = 1;
-    }
-
-    return new Promise((resolve, reject) => {
-      let concat: string;
-      // check if url already has a query param
-      if (url.indexOf('?') > 0) {
-        concat = '&';
-      } else {
-        concat = '?';
-      }
-
-      this.http.get(url + concat + 'page=' + page)
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        },
-          error => {
-            reject(error);
-          });
-    });
+  load(page: number = 1): Observable<News[]> {
+    const concat = (this.url.indexOf('?') > 0) ? '&' : '?';
+    return this.http.get<News[]>(this.url + concat + 'page=' + page);
   }
 }

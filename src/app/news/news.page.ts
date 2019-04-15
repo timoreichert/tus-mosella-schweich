@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../news.service';
-import { ConfigService } from '../config.service';
+import { map, tap } from 'rxjs/operators';
 
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
+import { MediaService } from '../media.service';
+import { NewsService } from '../news.service';
+import { News } from '../news.model';
 
 @Component({
   selector: 'app-news',
@@ -10,50 +14,69 @@ import { ConfigService } from '../config.service';
 })
 export class NewsPage implements OnInit {
 
-  items: any;
+  items: News[];
   page = 1;
-  route: string;
 
   constructor(
     private newsService: NewsService,
-    configService: ConfigService
-  ) {
-    this.route = configService.url + 'wp-json/wp/v2/posts';
-  }
+    private mediaService: MediaService,
+    private nativeStorage: NativeStorage
+  ) { }
 
   ngOnInit() {
-    this.page = 0;
+    this.page = 1;
     this.items = [];
-    this.loadMore(null);
+
+    this.nativeStorage.getItem('news')
+      .then(
+        data => this.items = data
+      ).finally(() => this.loadMore());
+
+
   }
 
   doRefresh(refresh: any) {
     this.ngOnInit();
-    setTimeout(() => refresh.complete(), 500);
+    setTimeout(() => refresh.target.complete(), 750);
   }
 
-  loadMore(infiniteScroll: any) {
-    this.page++;
-    this.newsService.load(this.route, this.page).then(items => {
-      const length = items['length'];
-      if (length === 0) {
-        if (infiniteScroll && infiniteScroll.target) {
-          infiniteScroll.target.complete();
-        }
-        return;
-      }
-      for (let i = 0; i < length; ++i) {
-        this.items.push(items[i]);
-      }
-      if (infiniteScroll && infiniteScroll.target) {
-        infiniteScroll.target.complete();
-      }
+  loadMore(infiniteScroll?: any) {
+    this.newsService.load(this.page++)
+      .pipe(
+        map(news => {
+          news
+            .filter(n => n.featured_media > 0)
+            .map(n => {
+              this.mediaService.getMediaUrl(n.featured_media).subscribe(m => {
+                n.featured_media_source_url = m.source_url;
+              });
+              return n;
+            });
+          return news;
+        })
+      ).subscribe(
+        res => {
+          this.items.push(...res);
+          this.nativeStorage.setItem('news', this.items);
+        },
+        err => console.warn(err),
+        () => {
+          if (infiniteScroll && infiniteScroll.target) {
+            infiniteScroll.target.complete();
+          }
+        });
+
+    /*
+    .then(items => {
+      this.items.push(...items);
+      
     }).catch(e => {
+      console.warn(e);
+    }).finally(() => {
       if (infiniteScroll && infiniteScroll.target) {
         infiniteScroll.target.complete();
       }
-      console.warn(e);
     });
+    */
   }
-
 }
