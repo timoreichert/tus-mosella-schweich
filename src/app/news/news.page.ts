@@ -26,13 +26,10 @@ export class NewsPage implements OnInit {
   ngOnInit() {
     this.page = 1;
     this.items = [];
-
     this.nativeStorage.getItem('news')
       .then(
         data => this.items = data
       ).finally(() => this.loadMore());
-
-
   }
 
   doRefresh(refresh: any) {
@@ -44,18 +41,20 @@ export class NewsPage implements OnInit {
     this.newsService.load(this.page++)
       .pipe(
         map(news => {
-          news
-            .filter(n => n.featured_media > 0)
+          return news
             .map(n => {
-              this.mediaService.getMediaUrl(n.featured_media).subscribe(m => {
-                n.featured_media_source_url = m.source_url;
-              });
-              return n;
+              const { id, excerpt, date, title, featured_media } = n;
+              return { id, excerpt, date, title, 
+                featured_media_source_url: featured_media === 0 ? null : 
+                  this.mediaService.getMediaUrl(featured_media).pipe(
+                    map(m => m.source_url)
+                  )
+              } as News;
             });
-          return news;
         })
       ).subscribe(
         res => {
+          console.log(res);
           this.items.push(...res);
           this.nativeStorage.setItem('news', this.items);
         },
@@ -65,18 +64,9 @@ export class NewsPage implements OnInit {
             infiniteScroll.target.complete();
           }
         });
+  }
 
-    /*
-    .then(items => {
-      this.items.push(...items);
-      
-    }).catch(e => {
-      console.warn(e);
-    }).finally(() => {
-      if (infiniteScroll && infiniteScroll.target) {
-        infiniteScroll.target.complete();
-      }
-    });
-    */
+  trackById(index: number, item: News) {
+    return item ? item.id : null;
   }
 }

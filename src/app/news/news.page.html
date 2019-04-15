@@ -11,8 +11,8 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card class="news-card" *ngFor="let item of items">
-    <ion-img *ngIf="item.featured_media_source_url" [src]="item.featured_media_source_url"></ion-img>
+  <ion-card class="news-card" *ngFor="let item of items; trackBy trackById">
+    <ion-img *ngIf="item.featured_media_source_url" [src]="item.featured_media_source_url | async"></ion-img>
     <ion-card-header>
       <ion-card-title>
         <span *ngIf="item.title && item.title.rendered" [innerHTML]="item.title.rendered"></span>
