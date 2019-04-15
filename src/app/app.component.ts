@@ -40,6 +40,10 @@ export class AppComponent {
       url: '/impressum',
       icon: 'information-circle-outline'
     }, {
+      title: 'Datenschutzerklärung',
+      url: '/datenschutz',
+      icon: 'information-circle-outline'
+    }, {
       title: 'Kontakt',
       url: '/contact',
       icon: 'call'

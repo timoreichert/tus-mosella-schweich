@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'news', loadChildren: './news/news.module#NewsPageModule' },
   { path: 'social', loadChildren: './social/social.module#SocialPageModule' },
   { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
-  { path: 'fanshop', loadChildren: './fanshop/fanshop.module#FanshopPageModule' }
+  { path: 'fanshop', loadChildren: './fanshop/fanshop.module#FanshopPageModule' },
+  { path: 'datenschutz', loadChildren: './datenschutz/datenschutz.module#DatenschutzPageModule' }
 ];
 
 @NgModule({
