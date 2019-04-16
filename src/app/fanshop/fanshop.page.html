@@ -1,12 +1,36 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Fan Shop</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card class="news-card" *ngFor="let item of items; trackBy trackById">
+    <ng-container *ngIf="item.images">
+      <ion-slides pager="true">
+        <ion-slide *ngFor="let image of item.images; trackBy trackById">
+          <ion-img [src]="image.src" [alt]="image.alt"></ion-img>
+        </ion-slide>
+      </ion-slides>
+    </ng-container>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-button [href]="item.permalink" color="dark" expand="full">
+          <ion-icon slot="start" name="basket"></ion-icon> {{item.name}}
+        </ion-button>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p *ngIf="item.short_description" [innerHTML]="item.short_description"></p>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

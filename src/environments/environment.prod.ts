@@ -1,7 +1,13 @@
 export const environment = {
   production: true,
   version: '2.0.0',
-  firebase: {
+  wordpress: {
+    origin: 'https://mosella-schweich.de/',
+    woocommerce: {
+      consumer_key: 'xxx',
+      consumer_secret: 'xxx'
+    }
+  }, firebase: {
     apiKey: 'AIzaSyA7g1skAu6ZYr4TUR-Xj6y6rgyraYToSZ8',
     authDomain: 'tus-mosella-schweich-app.firebaseapp.com',
     databaseURL: 'https://tus-mosella-schweich-app.firebaseio.com',

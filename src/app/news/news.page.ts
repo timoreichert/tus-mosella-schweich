@@ -47,9 +47,7 @@ export class NewsPage implements OnInit {
           });
         })
       ).subscribe(
-        news => {
-          this.items.push(...news);
-        },
+        news => this.items.push(...news),
         err => console.warn(err),
         () => {
           if (infiniteScroll && infiniteScroll.target) {
