@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./badminton.page.scss'],
 })
 export class BadmintonPage implements OnInit {
-
   constructor() { }
-
   ngOnInit() {
   }
-
 }

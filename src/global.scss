@@ -9,3 +9,30 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.slide-zoom,
+.swiper-slide {
+    text-align: left;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+figure {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    max-height: 300px;
+
+    img {
+        display: block;
+        width: 100%;
+    }
+}
+
+.training {
+    ion-note {
+        font-size: 12px !important;
+    }
+}

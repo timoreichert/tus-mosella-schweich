@@ -36,14 +36,6 @@ export class AppComponent {
       url: '/feedback',
       icon: 'mail'
     }, {
-      title: 'Impressum',
-      url: '/impressum',
-      icon: 'information-circle-outline'
-    }, {
-      title: 'Datenschutzerklärung',
-      url: '/datenschutz',
-      icon: 'information-circle-outline'
-    }, {
       title: 'Kontakt',
       url: '/contact',
       icon: 'call'

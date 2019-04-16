@@ -26,7 +26,7 @@ export class HomePage {
         path: '/abteilungen/basketball/'
       }, {
         title: 'Cheerleading',
-        imgSrc: '/assets/cheerleading_schweich.jpg',
+        imgSrc: '/assets/TuS_Mosella_Schweich_EV_Cheerleading.jpg',
         path: '/abteilungen/cheerleading/'
       }, {
         title: 'Fußball',

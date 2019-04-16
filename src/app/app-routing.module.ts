@@ -16,12 +16,10 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   },
   { path: 'feedback', loadChildren: './feedback/feedback.module#FeedbackPageModule' },
-  { path: 'impressum', loadChildren: './impressum/impressum.module#ImpressumPageModule' },
   { path: 'news', loadChildren: './news/news.module#NewsPageModule' },
   { path: 'social', loadChildren: './social/social.module#SocialPageModule' },
   { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
   { path: 'fanshop', loadChildren: './fanshop/fanshop.module#FanshopPageModule' },
-  { path: 'datenschutz', loadChildren: './datenschutz/datenschutz.module#DatenschutzPageModule' },
   {
     path: 'abteilungen', children: [
       { path: 'badminton', loadChildren: './abteilung/badminton/badminton.module#BadmintonPageModule' },
