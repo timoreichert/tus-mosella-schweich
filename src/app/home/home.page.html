@@ -63,19 +63,36 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide *ngFor="let slide of slides">
-        <ion-card class="slide-card" (click)="openWebpage(slide.url)">
+  <ng-container *ngIf="getCols() <= 1">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let slide of slides">
+        <ion-card class="slide-card" [routerDirection]="'root'" [routerLink]="[slide.path]">
+          <ion-card-header>
+            <ion-card-title>{{slide.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img [src]="slide.imgSrc"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </ng-container>
+  <ng-container *ngIf="getCols() > 1">
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let slide of slides">
+          <ion-card class="slide-card" [routerDirection]="'root'" [routerLink]="[slide.path]">
             <ion-card-header>
               <ion-card-title>{{slide.title}}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-                <ion-img [src]="slide.imgSrc"></ion-img>
+              <ion-img [src]="slide.imgSrc"></ion-img>
             </ion-card-content>
           </ion-card>
-      <h1></h1>
-    </ion-slide>
-  </ion-slides>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
   <!--
   <ion-list lines="none">
     <ion-list-header>

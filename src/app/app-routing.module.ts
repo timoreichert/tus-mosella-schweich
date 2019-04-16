@@ -21,7 +21,23 @@ const routes: Routes = [
   { path: 'social', loadChildren: './social/social.module#SocialPageModule' },
   { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
   { path: 'fanshop', loadChildren: './fanshop/fanshop.module#FanshopPageModule' },
-  { path: 'datenschutz', loadChildren: './datenschutz/datenschutz.module#DatenschutzPageModule' }
+  { path: 'datenschutz', loadChildren: './datenschutz/datenschutz.module#DatenschutzPageModule' },
+  {
+    path: 'abteilungen', children: [
+      { path: 'badminton', loadChildren: './abteilung/badminton/badminton.module#BadmintonPageModule' },
+      { path: 'basketball', loadChildren: './abteilung/basketball/basketball.module#BasketballPageModule' },
+      { path: 'cheerleading', loadChildren: './abteilung/cheerleading/cheerleading.module#CheerleadingPageModule' },
+      { path: 'fussball', loadChildren: './abteilung/fussball/fussball.module#FussballPageModule' },
+      { path: 'gesundheitssport', loadChildren: './abteilung/gesundheitssport/gesundheitssport.module#GesundheitssportPageModule' },
+      { path: 'herzsport', loadChildren: './abteilung/herzsport/herzsport.module#HerzsportPageModule' },
+      { path: 'karate', loadChildren: './abteilung/karate/karate.module#KaratePageModule' },
+      { path: 'leichtathletik', loadChildren: './abteilung/leichtathletik/leichtathletik.module#LeichtathletikPageModule' },
+      { path: 'tennis', loadChildren: './abteilung/tennis/tennis.module#TennisPageModule' },
+      { path: 'tischtennis', loadChildren: './abteilung/tischtennis/tischtennis.module#TischtennisPageModule' },
+      { path: 'turnen', loadChildren: './abteilung/turnen/turnen.module#TurnenPageModule' },
+      { path: 'volleyball', loadChildren: './abteilung/volleyball/volleyball.module#VolleyballPageModule' }
+    ]
+  }
 ];
 
 @NgModule({
@@ -30,4 +46,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

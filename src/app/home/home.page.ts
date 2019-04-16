@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { Observable, fromEvent } from 'rxjs';
 import { Platform } from '@ionic/angular';
 
 @Component({
@@ -16,75 +14,62 @@ export class HomePage {
     slidesPerView: 1.4
   };
 
-  constructor(private platform: Platform, private iab: InAppBrowser) {
-    this.setSlidesPerView();
+  constructor(private platform: Platform) {
     this.slides = [
       {
         title: 'Badminton',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_Badminton.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/badminton/'
+        path: '/abteilungen/badminton/'
       }, {
         title: 'Basketball',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_Basketball.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/basketball/'
+        path: '/abteilungen/basketball/'
       }, {
         title: 'Cheerleading',
         imgSrc: '/assets/cheerleading_schweich.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/turnen/cheerleading/'
+        path: '/abteilungen/cheerleading/'
       }, {
         title: 'Fußball',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_fussball.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/fussball/'
+        path: '/abteilungen/fussball/'
       }, {
         title: 'Gesundheitssport',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_gesundheitssport.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/gesundheitssport/'
+        path: '/abteilungen/gesundheitssport/'
       }, {
         title: 'Herzsport',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_herzsport.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/herzsport/'
+        path: '/abteilungen/herzsport/'
       }, {
         title: 'Karate',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_karate.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/karate/'
+        path: '/abteilungen/karate/'
       }, {
         title: 'Leichtathletik',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_leichtathletik.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/leichtathletik/'
+        path: '/abteilungen/leichtathletik/'
       }, {
         title: 'Tennis',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_Tennis.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/tennis/'
+        path: '/abteilungen/tennis/'
       }, {
         title: 'Tischtennis',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_tischtennis.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/tischtennis/'
+        path: '/abteilungen/tischtennis/'
       }, {
         title: 'Turnen',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_turnen.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/turnen/'
+        path: '/abteilungen/turnen/'
       }, {
         title: 'Volleyball',
         imgSrc: '/assets/TuS_Mosella_Schweich_EV_volleyball.jpg',
-        url: 'https://mosella-schweich.de/abteilungen/volleyball/'
+        path: '/abteilungen/volleyball/'
       }
     ];
   }
 
-  private setSlidesPerView() {
-    if (this.platform.width() > 420) {
-      this.slideOpts.slidesPerView = 2;
-    } else if (this.platform.width() > 380) {
-      this.slideOpts.slidesPerView = 1.8;
-    } else if (this.platform.width() > 340) {
-      this.slideOpts.slidesPerView = 1.6;
-    } else {
-      this.slideOpts.slidesPerView = 1.4;
-    }
-  }
-
-  openWebpage(url: string): void {
-    const browser = this.iab.create(url);
+  getCols(): number{
+    return Math.floor(this.platform.width() / 200);
   }
 
 }
