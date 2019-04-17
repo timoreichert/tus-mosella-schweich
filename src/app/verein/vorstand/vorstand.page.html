@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vorstand</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <figure>
+    <img src="/assets/Vorstand_TuS_Mosella_Schweich_e.V-960x540.jpg">
+  </figure>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>Der Geschäftsführende Vorstand</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h3>Der Geschäftsführende Vorstand des TuS Mosella Schweich e.V. ist wie folgt aufgebaut: </h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ng-container *ngIf="getCols() <= 1">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide *ngFor="let slide of slides">
+        <ion-card class="slide-card">
+          <ion-img [src]="slide.imgSrc"></ion-img>
+          <ion-card-header>
+            <ion-card-subtitle>{{slide.name}}</ion-card-subtitle>
+            <ion-card-title>{{slide.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-list lines="inset" class="task-list">
+              <ion-list-header>
+                <ion-label>Aufgaben</ion-label>
+              </ion-list-header>
+              <ion-item *ngFor="let task of slide.tasks">
+                {{task}}
+              </ion-item>
+            </ion-list>
+            <ion-button expand="full" href="{{slide.url}}">
+                <ion-icon slot="start" name="person"></ion-icon>
+                zum Portrait
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </ng-container>
+  <ng-container *ngIf="getCols() > 1">
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let slide of vorsitzende()" size="6">
+            <ion-card class="slide-card">
+                <ion-img [src]="slide.imgSrc"></ion-img>
+                <ion-card-header>
+                  <ion-card-subtitle>{{slide.name}}</ion-card-subtitle>
+                  <ion-card-title>{{slide.title}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-list lines="inset" class="task-list">
+                    <ion-list-header>
+                      <ion-label>Aufgaben</ion-label>
+                    </ion-list-header>
+                    <ion-item *ngFor="let task of slide.tasks">
+                      {{task}}
+                    </ion-item>
+                  </ion-list>
+                  <ion-button expand="full" href="{{slide.url}}">
+                      <ion-icon slot="start" name="person"></ion-icon>
+                      zum Portrait
+                  </ion-button>
+                </ion-card-content>
+              </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col *ngFor="let slide of geschaeftsfuehrer()"  size="4">
+              <ion-card class="slide-card">
+                  <ion-img [src]="slide.imgSrc"></ion-img>
+                  <ion-card-header>
+                    <ion-card-subtitle>{{slide.name}}</ion-card-subtitle>
+                    <ion-card-title>{{slide.title}}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-list lines="inset" class="task-list">
+                      <ion-list-header>
+                        <ion-label>Aufgaben</ion-label>
+                      </ion-list-header>
+                      <ion-item *ngFor="let task of slide.tasks">
+                        {{task}}
+                      </ion-item>
+                    </ion-list>
+                    <ion-button expand="full" href="{{slide.url}}">
+                        <ion-icon slot="start" name="person"></ion-icon>
+                        zum Portrait
+                    </ion-button>
+                  </ion-card-content>
+                </ion-card>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  </ng-container>
+</ion-content>

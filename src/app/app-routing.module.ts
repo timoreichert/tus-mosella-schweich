@@ -35,7 +35,14 @@ const routes: Routes = [
       { path: 'turnen', loadChildren: './abteilung/turnen/turnen.module#TurnenPageModule' },
       { path: 'volleyball', loadChildren: './abteilung/volleyball/volleyball.module#VolleyballPageModule' }
     ]
-  }
+  },
+  {
+    path: 'verein', children: [
+      { path: 'satzung', loadChildren: './verein/satzung/satzung.module#SatzungPageModule' },
+      { path: 'vorstand', loadChildren: './verein/vorstand/vorstand.module#VorstandPageModule' },
+      { path: 'vereinsportrait', loadChildren: './verein/vereinsportrait/vereinsportrait.module#VereinsportraitPageModule' }
+    ]
+  },
 ];
 
 @NgModule({

@@ -8,8 +8,8 @@ export const environment = {
   wordpress: {
     origin: 'https://mosella-schweich.de/',
     woocommerce: {
-      consumer_key: 'xxx',
-      consumer_secret: 'xxx'
+      consumer_key: 'ck_f70e03e79c05602deb147001441f638cc2abf680',
+      consumer_secret: 'cs_06764ee41feb5032e51c3ba2eb2f352a1b18eaec'
     }
   }, firebase: {
     apiKey: 'AIzaSyA7g1skAu6ZYr4TUR-Xj6y6rgyraYToSZ8',
