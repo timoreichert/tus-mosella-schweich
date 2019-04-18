@@ -10,13 +10,13 @@
 <ion-content>
   <ng-container *ngIf="getCols() <= 1">
     <ion-slides pager="true" [options]="slideOpts">
-      <ion-slide *ngFor="let slide of slides">
-        <ion-card class="slide-card" [routerLink]="[slide.path]">
+      <ion-slide *ngFor="let department of departments | async">
+        <ion-card class="slide-card" [routerLink]="[department.path]">
           <ion-card-header>
-            <ion-card-title>{{slide.title}}</ion-card-title>
+            <ion-card-title>{{department.title}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-img [src]="slide.imgSrc"></ion-img>
+            <ion-img [src]="department.imgSrc"></ion-img>
           </ion-card-content>
         </ion-card>
       </ion-slide>
@@ -25,13 +25,13 @@
   <ng-container *ngIf="getCols() > 1">
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let slide of slides">
-          <ion-card class="slide-card" [routerLink]="[slide.path]">
+        <ion-col *ngFor="let department of departments | async">
+          <ion-card class="slide-card" [routerLink]="[department.path]">
             <ion-card-header>
-              <ion-card-title>{{slide.title}}</ion-card-title>
+              <ion-card-title>{{department.title}}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <ion-img [src]="slide.imgSrc"></ion-img>
+              <ion-img [src]="department.imgSrc"></ion-img>
             </ion-card-content>
           </ion-card>
         </ion-col>

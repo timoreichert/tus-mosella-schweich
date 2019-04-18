@@ -6,32 +6,20 @@
     <ion-title>Badminton</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content *ngIf="department$|async as department">
   <figure>
-    <img src="/assets/TuS_Mosella_Schweich_EV_Badminton_header.jpg">
+    <img [src]="department.headerImgSrc">
   </figure>
   <ion-slides pager="true">
     <ion-slide>
       <ion-grid>
         <ion-row>
           <ion-col>
-            <h2>Die Abteilung Badminton</h2>
-            <h3>Badminton eine der schnellsten, laufintensivsten und anstrengendsten Sportarten der Welt ist.</h3>
-            <p>Unsere Abteilung Badminton wurde 2009 gegründet und bietet Spiel und Spaß für jeden Spieler, unabhängig
-              vom Alter oder der Spielstärke. Auch für Spieler die ohne Leistungsdenken und Anwesenheitspflicht einfach
-              mal ein paar Bälle schlagen wollen. Auch “relative Anfänger” sind herzlich willkommen, da wir eher ein
-              "Hobbyverein" sind und “nur” in der Freizeitliga (Breitensportliga, Gruppe Trier) aktiv sind. Dort spielen
-              wir vierzehntägig gegen andere Vereine in der Region. Bestimmte Voraussetzungen braucht man nicht für
-              Mitglied der Abteilung Badminton zu werden. Natürlich sollte ein wenig Auge-Hand-Koordination zum Ball
-              treffen erforderlich.</p>
-            <p>Mittels einer Förderungspyramide können die Mitglieder sich gegenseitig herausfordern und aneinander
-              messen. Normalerweise spielt aber in der Tat so gut wie jeder mit jedem. Dass sich meistens Spielpaarungen
-              zusammenfinden, die in etwa die gleiche Spielstärke haben liegt in der Natur der Sache. Wir haben aber
-              normalerweise auch jede Spielstärke beim Trainingsabend, also vom Anfänger bis "Spielt-schon-länger".</p>
-            <p>Das Training findet statt in der Sporthalle am Bodenländchen und bietet beste Bedingungen auf 4 Feldern.
-              Wir freuen uns sehr, wenn Sie mal für ein Probetraining vorbei schauen möchten! Kommen Sie einfach gerne
-              vorbei und probiere Badminton bei uns aus! Gerne darf man natürlich auch Freunde / Bekannte mitbringen.
-              Dann hat man zur Not gleich jemanden zum Spielen parat. </p>
+            <h2>{{department.header}}</h2>
+            <h3>{{department.subHeader}}</h3>
+            <ng-container *ngFor="let description of department.description">
+              <p>{{description}}</p>
+            </ng-container>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -44,27 +32,30 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col>
-            <h3>Abteilungsleiter der Abteilung Badminton</h3>
+          <ion-col *ngFor="let contact of department.contact">
+            <ion-list>
+              <ion-list-header *ngIf="contact.title">
+                {{contact.title}}
+              </ion-list-header>
+              <ion-item *ngIf="contact.name">
+                <ion-avatar slot="start" *ngIf="contact.imgSrc">
+                  <img [src]="contact.imgSrc">
+                </ion-avatar>
+                <ion-avatar slot="start" *ngIf="!contact.imgSrc">
+                  <img src="/assets/avatar.svg">
+                </ion-avatar>
+                <ion-label>{{contact.name}}</ion-label>
+              </ion-item>
+              <ion-item *ngIf="contact.tel" [href]="'tel:' + contact.tel">
+                <ion-icon name="call" slot="start"></ion-icon>
+                <ion-label>{{contact.tel}}</ion-label>
+              </ion-item>
+              <ion-item *ngIf="contact.mail" [href]="'mailto:' + contact.mail">
+                <ion-icon name="mail" slot="start"></ion-icon>
+                <ion-label>{{contact.mail}}</ion-label>
+              </ion-item>
+            </ion-list>
           </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="2">
-            <ion-icon name="person"></ion-icon>
-          </ion-col>
-          <ion-col col-8>Thomas Hamm</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="2">
-            <ion-icon name="call"></ion-icon>
-          </ion-col>
-          <ion-col col-8><a href="tel:+491792111091">0179-2111091</a></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="2">
-            <ion-icon name="mail"></ion-icon>
-          </ion-col>
-          <ion-col col-8> <a href="mailto:badminton@mosella-schweich.de">badminton@mosella-schweich.de </a></ion-col>
         </ion-row>
       </ion-grid>
     </ion-slide>
