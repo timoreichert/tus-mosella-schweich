@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-leichtathletik',
-  templateUrl: './leichtathletik.page.html',
-  styleUrls: ['./leichtathletik.page.scss'],
+  templateUrl: '../abteilung.template.html'
 })
-export class LeichtathletikPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+export class LeichtathletikPage extends AbteilungTemplate  {
+  constructor(db: AngularFirestore) {
+    super(db, '/departments/leichtathletik');
   }
-
 }

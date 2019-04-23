@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-karate',
-  templateUrl: './karate.page.html',
-  styleUrls: ['./karate.page.scss'],
+  templateUrl: '../abteilung.template.html'
 })
-export class KaratePage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+export class KaratePage extends AbteilungTemplate  {
+  constructor(db: AngularFirestore) {
+    super(db, '/departments/karate');
   }
-
 }

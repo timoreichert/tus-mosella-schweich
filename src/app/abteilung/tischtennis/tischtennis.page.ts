@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-tischtennis',
-  templateUrl: './tischtennis.page.html',
-  styleUrls: ['./tischtennis.page.scss'],
+  templateUrl: '../abteilung.template.html'
 })
-export class TischtennisPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+export class TischtennisPage extends AbteilungTemplate  {
+  constructor(db: AngularFirestore) {
+    super(db, '/departments/tischtennis');
   }
-
 }

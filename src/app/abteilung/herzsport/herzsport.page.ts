@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-herzsport',
-  templateUrl: './herzsport.page.html',
-  styleUrls: ['./herzsport.page.scss'],
+  templateUrl: '../abteilung.template.html'
 })
-export class HerzsportPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+export class HerzsportPage extends AbteilungTemplate  {
+  constructor(db: AngularFirestore) {
+    super(db, '/departments/herzsport');
   }
-
 }

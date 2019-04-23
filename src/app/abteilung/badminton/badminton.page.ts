@@ -1,22 +1,13 @@
 import { Component } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { Department } from '../abteilung.interface';
-
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-badminton',
-  templateUrl: './badminton.page.html',
-  styleUrls: ['./badminton.page.scss'],
+  templateUrl: '../abteilung.template.html'
 })
-export class BadmintonPage {
-
-  private departmentDoc: AngularFirestoreDocument<Department>;
-  department$: Observable<Department>;
-
-  constructor(private db: AngularFirestore) {
-    this.departmentDoc = this.db.doc<Department>('/departments/badminton');
-    this.department$ = this.departmentDoc.valueChanges();
+export class BadmintonPage extends AbteilungTemplate  {
+  constructor(db: AngularFirestore) {
+    super(db, '/departments/badminton');
   }
 }
