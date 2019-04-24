@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
+
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +11,16 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  
+
+  public version: string;
+
   constructor(private platform: Platform,
+    private appVersion: AppVersion,
     private videoPlayer: YoutubeVideoPlayer) {
+
+      this.appVersion.getVersionNumber()
+      .then(v => this.version = v)
+      .catch(() => this.version = environment.version);
   }
 
   isPortrait(): boolean  {
