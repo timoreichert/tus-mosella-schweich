@@ -4,10 +4,12 @@ import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-tischtennis',
-  templateUrl: '../abteilung.template.html'
+  templateUrl: '../abteilung.template.html',
+  styleUrls: ['../abteilung.template.scss']
 })
 export class TischtennisPage extends AbteilungTemplate  {
-  constructor(db: AngularFirestore) {
-    super(db, '/departments/tischtennis');
+  url = '/departments/tischtennis';
+  constructor(protected db: AngularFirestore) {
+    super(db);
   }
 }

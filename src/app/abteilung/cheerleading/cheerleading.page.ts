@@ -4,10 +4,12 @@ import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-cheerleading',
-  templateUrl: '../abteilung.template.html'
+  templateUrl: '../abteilung.template.html',
+  styleUrls: ['../abteilung.template.scss']
 })
 export class CheerleadingPage extends AbteilungTemplate  {
-  constructor(db: AngularFirestore) {
-    super(db, '/departments/cheerleading');
+  url = '/departments/cheerleading';
+  constructor(protected db: AngularFirestore) {
+    super(db);
   }
 }

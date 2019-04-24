@@ -4,10 +4,12 @@ import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-volleyball',
-  templateUrl: '../abteilung.template.html'
+  templateUrl: '../abteilung.template.html',
+  styleUrls: ['../abteilung.template.scss']
 })
 export class VolleyballPage extends AbteilungTemplate  {
-  constructor(db: AngularFirestore) {
-    super(db, '/departments/volleyball');
+  url = '/departments/volleyball';
+  constructor(protected db: AngularFirestore) {
+    super(db);
   }
 }

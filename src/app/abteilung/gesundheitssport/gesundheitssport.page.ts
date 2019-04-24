@@ -4,10 +4,12 @@ import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-gesundheitssport',
-  templateUrl: '../abteilung.template.html'
+  templateUrl: '../abteilung.template.html',
+  styleUrls: ['../abteilung.template.scss']
 })
 export class GesundheitssportPage extends AbteilungTemplate  {
-  constructor(db: AngularFirestore) {
-    super(db, '/departments/gesundheitssport');
+  url = '/departments/gesundheitssport';
+  constructor(protected db: AngularFirestore) {
+    super(db);
   }
 }

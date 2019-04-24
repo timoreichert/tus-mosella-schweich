@@ -19,16 +19,10 @@
                     News
                 </ion-button>
             </ion-col>
-            <ion-col size="6" sizeLg="4">
+            <ion-col size="12" sizeLg="4">
                 <ion-button expand="full" routerLink="/abteilungen">
                     <ion-icon slot="start" name="person"></ion-icon>
                     Sportangebote
-                </ion-button>
-            </ion-col>
-            <ion-col size="6" sizeLg="4">
-                <ion-button expand="full" routerLink="/social">
-                    <ion-icon slot="start" name="share"></ion-icon>
-                    Soziale Median
                 </ion-button>
             </ion-col>
             <ion-col size="6" sizeLg="4">
@@ -38,29 +32,35 @@
                 </ion-button>
             </ion-col>
             <ion-col size="6" sizeLg="4">
+                <ion-button expand="full" (click)="openHymne()">
+                    <ion-icon slot="start" name="microphone"></ion-icon>
+                    Hymne
+                </ion-button>
+            </ion-col>
+            <ion-col size="12" sizeLg="4">
                 <ion-button expand="full" routerLink="/list">
                     <ion-icon slot="start" name="calendar"></ion-icon>
                     Veranstaltungen
+                </ion-button>
+            </ion-col>
+            <ion-col size="12" sizeLg="4">
+                <ion-button expand="full" routerLink="/social">
+                    <ion-icon slot="start" name="share"></ion-icon>
+                    Soziale Medien
                 </ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
 <ion-footer>
-    <ion-toolbar color="dark">
-        <ion-buttons slot="secondary">
-            <ion-button>
+    <ion-toolbar>
+        <ion-buttons slot="primary">
+            <ion-button href="https://mosella-schweich.de/kontakt/">
                 <ion-icon slot="start" name="contact"></ion-icon> Kontakt
             </ion-button>
-            <ion-button>
-                <ion-icon slot="icon-only" name="search"></ion-icon>
+            <ion-button href="https://mosella-schweich.de/impressum/datenschutzerklaerung/">
+                <ion-icon slot="start" name="unlock"></ion-icon> Datenschutzerklärung
             </ion-button>
         </ion-buttons>
-        <ion-buttons slot="primary">
-            <ion-button color="danger">
-                <ion-icon slot="icon-only" name="more"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-title>Dark Toolbar</ion-title>
     </ion-toolbar>
 </ion-footer>

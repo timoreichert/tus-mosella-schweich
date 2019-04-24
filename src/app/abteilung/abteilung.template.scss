@@ -1,0 +1,10 @@
+.description {
+  font-size: small;
+  text-align: left;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.slide-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 280px);
+}

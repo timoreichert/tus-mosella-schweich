@@ -25,7 +25,7 @@
   <ng-container *ngIf="getCols() > 1">
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let department of departments | async">
+        <ion-col *ngFor="let department of departments | async" align-self-center>
           <ion-card class="slide-card" [routerLink]="[department.path]">
             <ion-card-header>
               <ion-card-title>{{department.title}}</ion-card-title>

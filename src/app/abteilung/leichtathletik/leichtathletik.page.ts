@@ -4,10 +4,12 @@ import { AbteilungTemplate } from '../abteilung.template';
 
 @Component({
   selector: 'app-leichtathletik',
-  templateUrl: '../abteilung.template.html'
+  templateUrl: '../abteilung.template.html',
+  styleUrls: ['../abteilung.template.scss']
 })
 export class LeichtathletikPage extends AbteilungTemplate  {
-  constructor(db: AngularFirestore) {
-    super(db, '/departments/leichtathletik');
+  url = '/departments/leichtathletik';
+  constructor(protected db: AngularFirestore) {
+    super(db);
   }
 }

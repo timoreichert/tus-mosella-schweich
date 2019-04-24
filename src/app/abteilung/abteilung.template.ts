@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Department } from './abteilung.interface';
@@ -7,19 +7,28 @@ import { Department } from './abteilung.interface';
 @Component({
   selector: 'app-abteilung-template',
   templateUrl: './abteilung.template.html',
-  styles: [`.description{
-      font-size: small;
-      text-align: left;
-    }`],
+  styleUrls: ['./abteilung.template.scss']
 })
-export class AbteilungTemplate {
+export class AbteilungTemplate implements OnInit {
 
+  protected _url: string;
   private departmentDoc: AngularFirestoreDocument<Department>;
-  department$: Observable<Department>;
+  public department$: Observable<Department>;
 
-  constructor(db: AngularFirestore, url: string) {
-    this.departmentDoc = db.doc<Department>(url);
+  constructor(protected db: AngularFirestore) { }
+
+  ngOnInit() {
+    console.log('url', this.url);
+    this.departmentDoc = this.db.doc<Department>(this.url);
     this.department$ = this.departmentDoc.valueChanges();
+  }
+
+  protected get url(): string{
+    return this._url;
+  };
+
+  protected set url(url: string) {
+    this._url = url;
   }
 
 }

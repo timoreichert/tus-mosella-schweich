@@ -18,12 +18,12 @@ export class AbteilungPage {
   };
   constructor(
     private platform: Platform,
-    private db: AngularFirestore
+    db: AngularFirestore
   ) {
     this.departments = db.collection('departments').valueChanges();
   }
 
   getCols(): number {
-    return Math.floor(this.platform.width() / 200);
+    return Math.floor(this.platform.width() / 240);
   }
 }

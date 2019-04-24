@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { AbteilungPage } from './abteilung.page';
+import { AbteilungTemplate } from './abteilung.template';
 
 const routes: Routes = [
   {
@@ -31,6 +32,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AbteilungPage]
+  declarations: [AbteilungPage, AbteilungTemplate]
 })
 export class AbteilungPageModule { }
