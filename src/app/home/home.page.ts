@@ -13,6 +13,10 @@ export class HomePage {
     private videoPlayer: YoutubeVideoPlayer) {
   }
 
+  isPortrait(): boolean  {
+    return this.platform.isPortrait();
+  }
+
   openHymne(){
     if(this.platform.is('ios') || this.platform.is('android')){
       this.videoPlayer.openVideo('FmGPWQYzDaE');
