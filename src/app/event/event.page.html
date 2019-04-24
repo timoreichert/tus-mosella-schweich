@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Veranstaltungen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-card *ngFor="let event of events$ | async">
+        <ion-img *ngIf="event.imgSrc" [src]="event.imgSrc"></ion-img>
+        <ion-card-header>
+          <ion-card-title *ngIf="event.title">{{event.title}}</ion-card-title>
+          <ion-card-subtitle *ngIf="event.date">
+            <ion-icon name="calendar"></ion-icon>
+            {{event.date.seconds*1000|date}}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{event.description}}
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
