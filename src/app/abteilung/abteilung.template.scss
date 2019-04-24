@@ -7,4 +7,5 @@
 .slide-container {
   overflow-y: auto;
   max-height: calc(100vh - 280px);
+  min-height: 240px;
 }

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AbteilungPage {
 
-  departments: Observable<any[]>;
+  departments$: Observable<any[]>;
   slides: Array<any>;
   slideOpts = {
     effect: 'slide',
@@ -20,7 +20,7 @@ export class AbteilungPage {
     private platform: Platform,
     db: AngularFirestore
   ) {
-    this.departments = db.collection('departments').valueChanges();
+    this.departments$ = db.collection('departments').valueChanges();
   }
 
   getCols(): number {
