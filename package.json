@@ -71,7 +71,7 @@
     "tslint": "~5.12.0",
     "typescript": "~3.2.4"
   },
-  "description": "An Ionic project",
+  "description": "Ofizielle App des TuS Mosella Schweich e.V.",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},

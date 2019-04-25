@@ -19,7 +19,7 @@ export class VorstandPage implements OnInit {
       {
         title: '1. Vorsitzender',
         name: 'Bernd Münchgesang',
-        imgSrc: '/assets/bernd_münchgesang.jpg',
+        imgSrc: '/assets/bernd_muenchgesang.jpg',
         url: 'https://mosella-schweich.de/vereinsportrait/vorstand/bernd-muenchgesang/',
         tasks: [
           'Vorsitzender Ehrungsausschuss',

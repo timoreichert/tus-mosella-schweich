@@ -7,8 +7,13 @@
     <access origin="https://mosella-schweich.de" />
     <allow-intent href="https://mosella-schweich.de/*" />
     <allow-intent href="https://fonts.gstatic.com/*" />
+    <allow-intent href="https://www.facebook.com/*" />
+    <allow-intent href="https://www.instagram.com/*" />
+    <allow-intent href="https://www.youtube.com/*" />
+    <allow-intent href="https://twitter.com/*" />
+    <allow-intent href="https://www.linkedin.com*" />
+    <allow-intent href="https://www.xing.com/*" />
     <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
