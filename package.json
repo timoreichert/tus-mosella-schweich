@@ -5,11 +5,11 @@
   "homepage": "https://mosella-schweich.de/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "android": "npm run android-build && npm run android-sign && npm run android-clean && npm run android-zipalign",
+    "android-build": "npx ionic cordova build android --prod --release",
+    "android-sign": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ../tus-mosella-app.keystore ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk tus-mosella-app",
+    "android-clean": "rm ./mosella-app.apk || true",
+    "android-zipalign": "$ANDROID_SDK_ROOT/build-tools/28.0.3/zipalign -v 4 ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ./mosella-app.apk"
   },
   "private": true,
   "dependencies": {
