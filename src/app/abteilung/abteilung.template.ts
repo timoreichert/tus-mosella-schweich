@@ -18,7 +18,6 @@ export class AbteilungTemplate implements OnInit {
   constructor(protected db: AngularFirestore) { }
 
   ngOnInit() {
-    console.log('url', this.url);
     this.departmentDoc = this.db.doc<Department>(this.url);
     this.department$ = this.departmentDoc.valueChanges();
   }

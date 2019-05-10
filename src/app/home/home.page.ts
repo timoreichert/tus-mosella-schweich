@@ -17,20 +17,19 @@ export class HomePage {
   constructor(private platform: Platform,
     private appVersion: AppVersion,
     private videoPlayer: YoutubeVideoPlayer) {
-
-      this.appVersion.getVersionNumber()
+    this.appVersion.getVersionNumber()
       .then(v => this.version = v)
       .catch(() => this.version = environment.version);
   }
 
-  isPortrait(): boolean  {
+  isPortrait(): boolean {
     return this.platform.isPortrait();
   }
 
-  openHymne(){
-    if(this.platform.is('ios') || this.platform.is('android')){
+  openHymne() {
+    if (this.platform.is('ios') || this.platform.is('android')) {
       this.videoPlayer.openVideo('FmGPWQYzDaE');
-    }else{
+    } else {
       window.location.href = 'https://www.youtube.com/watch?v=FmGPWQYzDaE';
     }
   }
