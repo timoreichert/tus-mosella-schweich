@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  version: '2.0.5',
+  version: '2.1.0',
+  google_calendar_origin: 'http://localhost:8100',
   wordpress: {
     origin: 'https://mosella-schweich.de/',
     woocommerce: {

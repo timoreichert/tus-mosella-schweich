@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  version: '2.0.5',
+  version: '2.1.0',
+  google_calendar_origin: 'https://calendar.google.com',
   wordpress: {
     origin: 'https://mosella-schweich.de/',
     woocommerce: {

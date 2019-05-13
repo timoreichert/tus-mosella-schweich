@@ -1,0 +1,8 @@
+{
+    "/calendar": {
+      "target": "https://calendar.google.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

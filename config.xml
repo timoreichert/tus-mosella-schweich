@@ -1,18 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.mosellaschweich.app" version="2.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="de.mosellaschweich.app" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>TuS Mosella App</name>
     <description>Ofizielle App des TuS Mosella Schweich e.V.</description>
     <author email="tus@mosella-schweich.de" href="https://mosella-schweich.de/">TuS Mosella Schweich e.V.</author>
     <content src="index.html" />
     <access origin="https://mosella-schweich.de" />
-    <allow-intent href="https://mosella-schweich.de/*" />
-    <allow-intent href="https://fonts.gstatic.com/*" />
-    <allow-intent href="https://www.facebook.com/*" />
-    <allow-intent href="https://www.instagram.com/*" />
-    <allow-intent href="https://www.youtube.com/*" />
-    <allow-intent href="https://twitter.com/*" />
-    <allow-intent href="https://www.linkedin.com*" />
-    <allow-intent href="https://www.xing.com/*" />
+    <allow-intent href="https://*" />
     <allow-intent href="tel:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />

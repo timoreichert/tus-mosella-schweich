@@ -78,7 +78,7 @@ export class AppComponent {
       }
     });
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleBlackOpaque();
       this.splashScreen.hide();
     });
   }
