@@ -27,13 +27,12 @@ export class NewsPage implements OnInit {
   }
 
   doRefresh(refresh: any) {
-    this.loadMore();
+    this.ngOnInit();
     setTimeout(() => refresh.target.complete(), 750);
   }
 
   loadMore(infiniteScroll?: any) {
-    this.newsService.load(this.page++)
-      .pipe(
+    this.newsService.load(this.page++).pipe(
         map(news => {
           return news.map(n => {
             const { id, excerpt, date, title, featured_media } = n;

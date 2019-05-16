@@ -11,10 +11,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
 import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
-
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 
 import { AppComponent } from './app.component';
@@ -34,12 +35,14 @@ import { FirebaseCrashlyticsErrorHandler } from './firebase-crashlytics-error-ha
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
+    AngularFireFunctionsModule,
     AppRoutingModule
   ],
   providers: [
     AppVersion,
     StatusBar,
     SplashScreen,
+    NativeStorage,
     FirebaseAnalytics,
     FirebaseCrashlytics,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

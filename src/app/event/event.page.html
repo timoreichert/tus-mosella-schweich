@@ -11,17 +11,18 @@
     <ion-refresher (ionRefresh)="doRefresh($event)">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-    <ion-card class="news-card" *ngFor="let event of events">
+    <ion-card class="news-card" *ngFor="let event of events; trackBy trackById">
       <ion-card-header>
         <ion-card-title>
-          <span *ngIf="event.SUMMARY" [innerHTML]="event.SUMMARY"></span>
+          <span *ngIf="event.summary" [innerHTML]="event.summary"></span>
         </ion-card-title>
         <ion-card-subtitle>
-          <span *ngIf="event.DTSTART" [innerHTML]="event.DTSTART|date:'dd. MMMM yyyy HH:mm'"></span> - <span *ngIf="event.DTEND" [innerHTML]="event.DTEND|date:'HH:mm'"></span>
+          <span *ngIf="event.start" [innerHTML]="event.start.dateTime|date:'dd. MMMM yyyy HH:mm'"></span> - 
+          <span *ngIf="event.end" [innerHTML]="event.end.dateTime|date:'HH:mm'"></span>
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <p *ngIf="event.LOCATION" [innerHTML]="event.LOCATION"></p>
+        <p *ngIf="event.location" [innerHTML]="event.location"></p>
       </ion-card-content>
     </ion-card>
     <ion-infinite-scroll (ionInfinite)="loadMore($event)">

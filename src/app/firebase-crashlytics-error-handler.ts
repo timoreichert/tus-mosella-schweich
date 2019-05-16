@@ -15,7 +15,7 @@ export class FirebaseCrashlyticsErrorHandler implements ErrorHandler {
         if (this.platform.is('ios') || this.platform.is('android')) {
             this.fbCrashlytics.logException(`error: ${error}`);
         } else {
-            console.error(error)
+            console.error(error);
         }
     }
 }
